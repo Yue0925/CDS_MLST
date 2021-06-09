@@ -20,7 +20,6 @@ Return
 - getsolvetime(m): resolution time in seconds
 """
 function cplexSolveMLSTGrid2(m::Int, n::Int)
-
     # the cost of edge {(i,j), (i_,j_)}
     cost = zeros(Float64, (m, n, m, n))
 
@@ -29,9 +28,6 @@ function cplexSolveMLSTGrid2(m::Int, n::Int)
 
     # x[i, j, i_, j_] = 1 if edge {(i,j), (i_, j_)} belongs to a spanning tree
     @variable(M, x[1:m, 1:n, 1:m, 1:n], Bin)
-
-    # y[i,j] denotes the class of principal compomnent to which vertex (i, j) belongs
-    @variable(M, y[1:m, 1:n] >= 0, Int)
 
     # No buckle
     @constraint(M, [i in 1:m, j in 1:n], x[i, j, i, j] == 0)
