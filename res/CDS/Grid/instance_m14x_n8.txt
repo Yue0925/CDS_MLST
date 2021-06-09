@@ -13,3 +13,5 @@
 ⚪⚫⚪⚪⚫⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚫⚪
 A Grid graph of size 14×8 , with γ_c(G)=44
+solveTime = 6.198883056640625e-6
+isOptimal = true

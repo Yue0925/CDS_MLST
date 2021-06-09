@@ -5,3 +5,5 @@
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
 A Grid graph of size 6×17 , with γ_c(G)=41
+solveTime = 5.0067901611328125e-6
+isOptimal = true

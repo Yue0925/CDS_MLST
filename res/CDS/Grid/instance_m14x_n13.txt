@@ -13,3 +13,5 @@
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪
 A Grid graph of size 14×13 , with γ_c(G)=72
+solveTime = 1.4066696166992188e-5
+isOptimal = true

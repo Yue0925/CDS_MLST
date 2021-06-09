@@ -37,6 +37,6 @@ function CDSForGridGraphs(m::Int, n::Int)
 end
 
 
-#m=5
-#n=6
-#displaySolution(m, n, CDSForGridGraphs(m,n))
+m=5
+n=5
+displaySolution(m, n, CDSForGridGraphs(m,n))

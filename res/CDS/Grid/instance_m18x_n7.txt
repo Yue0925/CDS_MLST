@@ -17,3 +17,5 @@
 ⚪⚫⚪⚪⚫⚪⚫
 ⚪⚫⚪⚪⚫⚪⚪
 A Grid graph of size 18×7 , with γ_c(G)=54
+solveTime = 4.1961669921875e-5
+isOptimal = true

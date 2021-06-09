@@ -19,3 +19,5 @@
 ⚪⚫⚪⚪⚫⚪⚫
 ⚪⚫⚪⚪⚫⚪⚪
 A Grid graph of size 20×7 , with γ_c(G)=60
+solveTime = 8.106231689453125e-6
+isOptimal = true

@@ -1,0 +1,11 @@
+⚪⚪⚪⚫⚪
+⚫⚫⚫⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚫⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚫⚫⚫⚫⚫
+⚪⚪⚪⚪⚪
+A Grid graph of size 8×5 , with γ_c(G)=19
+solveTime = 0.0002288818359375
+isOptimal = true

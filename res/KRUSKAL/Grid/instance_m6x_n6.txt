@@ -1,0 +1,9 @@
+⚪⚪⚪⚪⚪⚪
+⚫⚫⚫⚫⚫⚫
+⚪⚫⚪⚫⚫⚪
+⚪⚫⚫⚫⚫⚪
+⚪⚫⚫⚫⚫⚫
+⚪⚫⚪⚪⚪⚪
+A Grid graph of size 6×6 , with γ_c(G)=19
+solveTime = 0.00026297569274902344
+isOptimal = true

@@ -1,0 +1,8 @@
+⚪⚪⚪⚫⚪
+⚫⚫⚫⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚫⚫⚫
+⚪⚫⚪⚪⚪
+A Grid graph of size 5×5 , with γ_c(G)=12
+solveTime = 0.011909008026123047
+isOptimal = true

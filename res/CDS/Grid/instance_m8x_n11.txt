@@ -7,3 +7,5 @@
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
 A Grid graph of size 8×11 , with γ_c(G)=35
+solveTime = 2.86102294921875e-6
+isOptimal = true

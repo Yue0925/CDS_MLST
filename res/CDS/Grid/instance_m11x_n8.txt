@@ -10,3 +10,5 @@
 ⚪⚫⚪⚪⚫⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚫⚪
 A Grid graph of size 11×8 , with γ_c(G)=35
+solveTime = 5.0067901611328125e-6
+isOptimal = true

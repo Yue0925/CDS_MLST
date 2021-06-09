@@ -17,7 +17,7 @@ function generateResultsGrid()
     # For each grid size considered
     for m in 5:20
         for n in 5:20
-            for type in ["CDS", "MLST"]
+            for type in ["CDS", "PL", "KRUSKAL"]
                 fileName = "../res/" * type * "/Grid/instance_m" * string(m) * "x" * "_n" * string(n) * ".txt"
                 #if !isfile(fileName)
                     println("-- Generating file " * fileName)
@@ -30,9 +30,19 @@ function generateResultsGrid()
                         writeSolution(fileName, m, n, CDS)
                     end
 
-                    if type == "MLST"
-                        isOptimal, solveTime, x = cplexSolveMLSTGrid(m, n)
-                        CDS = MLSTToCDS(m, n, x)
+                    if type == "PL"
+                        isOptimal, solveTime, x = cplexSolveMLSTGrid2(m, n)
+                        if isOptimal
+                            CDS = VariablesToCDS(m, n, x)
+                            writeSolution(fileName, m, n, CDS)
+                        end
+                    end
+
+                    if type == "KRUSKAL"
+                        isOptimal = true
+                        start = time()
+                        CDS = KRUSKAL(m, n)
+                        solveTime = time() - start
                         writeSolution(fileName, m, n, CDS)
                     end
 
@@ -41,7 +51,11 @@ function generateResultsGrid()
                     println(fout, "isOptimal = ", isOptimal)
                     close(fout)
 
-                    println("Solved problem: " * type * ", |CDS| = ", length(CDS), ", optimal: ", isOptimal, ", time: "* string(round(solveTime, sigdigits=2)) * "s\n")
+                    print("Solved problem: " * type * ", optimal: ", isOptimal, ", time: "* string(round(solveTime, sigdigits=2)) * "s\n")
+                    if isOptimal
+                        print(" |CDS| = ", length(CDS))
+                    end
+                    print("\n")
                 #end
             end
 
