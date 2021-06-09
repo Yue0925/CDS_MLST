@@ -92,9 +92,7 @@ function cplexSolveMLSTGrid2(m::Int, n::Int)
 
     # Constraints acyclic for any subsets of vertices
     @constraint(M, [i_ in 2:m, j_ in 2:n], sum(x[1:i_, 1:j_, 1:i_, 1:j_]) == 2*( i_*j_-1 ) )
-
-    # the number of edges in a spanning tree = the number of vertices -1
-    @constraint(M, sum(x) == 2*(m*n-1))
+    #@constraint(M, [i in 1:m-1, j in 1:n-1, i_ in i+1:m, j_ in j+1:n], sum(x[i:i_, j:j_, i:i_, j:j_]) == 2*( (i_-i+1)*(j_-j+1)-1 ) )
 
     @objective(M, Min, sum(x[i, j, i_, j_]*cost[i, j, i_, j_] for i in 1:m for j in 1:n for i_ in 1:m for j_ in 1:n))
 
