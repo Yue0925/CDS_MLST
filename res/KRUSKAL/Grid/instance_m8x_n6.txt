@@ -7,5 +7,5 @@
 ⚫⚫⚫⚫⚫⚪
 ⚪⚪⚪⚪⚫⚪
 A Grid graph of size 8×6 , with γ_c(G)=25 , a number of leaves 23
-solveTime = 0.00034499168395996094
+solveTime = 0.0002968311309814453
 isOptimal = true

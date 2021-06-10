@@ -5,5 +5,5 @@
 ⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫
 ⚪⚫⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪
 A Grid graph of size 6×16 , with γ_c(G)=52 , a number of leaves 44
-solveTime = 0.0008339881896972656
+solveTime = 0.0009129047393798828
 isOptimal = true

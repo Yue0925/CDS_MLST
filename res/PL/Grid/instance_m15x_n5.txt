@@ -1,5 +1,5 @@
-⚪⚪⚪⚫⚪
-⚫⚫⚫⚫⚪
+⚪⚫⚪⚪⚪
+⚪⚫⚫⚫⚫
 ⚪⚫⚪⚫⚪
 ⚪⚫⚪⚫⚪
 ⚪⚫⚪⚫⚪
@@ -14,5 +14,5 @@
 ⚪⚫⚪⚫⚪
 ⚪⚫⚪⚫⚪
 A Grid graph of size 15×5 , with γ_c(G)=31 , a number of leaves 44
-solveTime = 0.05299687385559082
+solveTime = 0.048512935638427734
 isOptimal = true

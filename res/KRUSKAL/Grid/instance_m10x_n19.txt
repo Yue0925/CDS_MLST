@@ -9,5 +9,5 @@
 ⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫
 ⚪⚫⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪
 A Grid graph of size 10×19 , with γ_c(G)=120 , a number of leaves 70
-solveTime = 0.0024390220642089844
+solveTime = 0.0025599002838134766
 isOptimal = true

@@ -145,7 +145,7 @@ function cplexSolveMLSTGrid3(m::Int, n::Int)
     # No isolated vertex (interior nodes of degree-4)
     for i in 2:m-1
         for j in 2:n-1
-             @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >= 1)
+             #@constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >= 1)
              @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) + 3*y[i, j] <= 4)
         end
     end
@@ -153,36 +153,36 @@ function cplexSolveMLSTGrid3(m::Int, n::Int)
     # No isolated vertex (boundary nodes of degree-3)
     i=1
     for j in 2:n-1
-        @constraint(M, (x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >= 1)
+        #@constraint(M, (x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >= 1)
         @constraint(M, (x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) + 2*y[i, j] <= 3)
     end
     i=m
     for j in 2:n-1
-        @constraint(M, (x[i, j, i-1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >=1)
+        #@constraint(M, (x[i, j, i-1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >=1)
         @constraint(M, (x[i, j, i-1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) + 2*y[i, j] <= 3)
     end
     j=1
     for i in 2:m-1
-        @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j+1]) >= 1)
+        #@constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j+1]) >= 1)
         @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j+1]) + 2*y[i, j] <= 3)
     end
     j=n
     for i in 2:m-1
-        @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1]) >= 1)
+        #@constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1]) >= 1)
         @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1]) + 2*y[i, j] <= 3)
     end
 
     # No isolated vertex (corner nodes of degree-2)
-    @constraint(M, (x[1, 1, 2, 1] + x[1, 1, 1, 2]) >= 1)
+    #@constraint(M, (x[1, 1, 2, 1] + x[1, 1, 1, 2]) >= 1)
     @constraint(M, (x[1, 1, 2, 1] + x[1, 1, 1, 2]) + y[1, 1] <= 2)
 
-    @constraint(M, (x[1, n, 1, n-1] + x[1, n, 2, n]) >= 1)
+    #@constraint(M, (x[1, n, 1, n-1] + x[1, n, 2, n]) >= 1)
     @constraint(M, (x[1, n, 1, n-1] + x[1, n, 2, n]) + y[1, n] <= 2)
 
-    @constraint(M, (x[m, 1, m-1, 1] + x[m, 1, m, 2]) >= 1)
+    #@constraint(M, (x[m, 1, m-1, 1] + x[m, 1, m, 2]) >= 1)
     @constraint(M, (x[m, 1, m-1, 1] + x[m, 1, m, 2]) + y[m, 1] <= 2)
 
-    @constraint(M, (x[m, n, m-1, n] + x[m, n, m, n-1]) >= 1)
+    #@constraint(M, (x[m, n, m-1, n] + x[m, n, m, n-1]) >= 1)
     @constraint(M, (x[m, n, m-1, n] + x[m, n, m, n-1]) + y[m, n] <= 2)
 
     # Constraints acyclic for any subsets of vertices

@@ -10,5 +10,5 @@
 ⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
 ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚫⚪
 A Grid graph of size 11×19 , with γ_c(G)=96 , a number of leaves 113
-solveTime = 0.8666200637817383
+solveTime = 0.624669075012207
 isOptimal = true

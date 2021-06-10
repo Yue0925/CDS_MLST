@@ -12,5 +12,5 @@
 ⚪⚫⚪⚪⚫⚪⚫
 ⚪⚫⚪⚪⚫⚪⚪
 A Grid graph of size 13×7 , with γ_c(G)=39 , a number of leaves 52
-solveTime = 3.814697265625e-6
+solveTime = 3.0994415283203125e-6
 isOptimal = true

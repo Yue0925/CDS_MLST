@@ -3,8 +3,8 @@
 ⚪⚫⚪⚪⚪⚪⚪⚪⚪⚪
 ⚪⚫⚫⚫⚫⚫⚫⚫⚫⚪
 ⚪⚫⚪⚪⚪⚪⚪⚪⚫⚪
-⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
-⚪⚪⚪⚪⚪⚪⚪⚪⚫⚪
+⚪⚫⚫⚫⚫⚫⚫⚫⚫⚪
+⚪⚫⚪⚪⚪⚪⚪⚪⚫⚪
 A Grid graph of size 7×10 , with γ_c(G)=31 , a number of leaves 39
-solveTime = 0.06017899513244629
+solveTime = 0.058509111404418945
 isOptimal = true

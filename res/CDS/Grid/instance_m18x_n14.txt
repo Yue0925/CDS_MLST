@@ -17,5 +17,5 @@
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
 A Grid graph of size 18×14 , with γ_c(G)=94 , a number of leaves 158
-solveTime = 3.2901763916015625e-5
+solveTime = 3.1948089599609375e-5
 isOptimal = true
