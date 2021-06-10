@@ -8,7 +8,7 @@ include("io.jl")
 TOL = 0.00001
 
 """
-Solve the MLST problem for grid with CPLEX
+Solve the relaxed MLST problem for grid with CPLEX (minimum spanning tree problem)
 
 Argument
 - m: the number of lines in a grid graph (m>=5)
@@ -106,14 +106,109 @@ function cplexSolveMLSTGrid2(m::Int, n::Int)
     # 1 - true if an optimum is found (type: Bool)
     # 2 - the resolution time (type Float64)
     # 3 - the value of each edge ((Array{VariableRef, 4}))
-    return JuMP.primal_status(M) == JuMP.MathOptInterface.FEASIBLE_POINT, time() - start, x, objective_value(M)/2
+    return JuMP.primal_status(M) == JuMP.MathOptInterface.FEASIBLE_POINT, time() - start, x
+
+end # function
+
+
+"""
+An integer linear programming for the maximum leaves spanning tree problem.
+"""
+function cplexSolveMLSTGrid3(m::Int, n::Int)
+
+    # Create the model
+    M = Model(CPLEX.Optimizer)
+
+    # x[i, j, i_, j_] = 1 if edge {(i,j), (i_, j_)} belongs to a spanning tree
+    @variable(M, x[1:m, 1:n, 1:m, 1:n], Bin)
+
+    # y[i, j] = 1, if node (i, j) is a leaf in the spanning tree
+    @variable(M, y[1:m, 1:n], Bin)
+
+    # No buckle
+    @constraint(M, [i in 1:m, j in 1:n], x[i, j, i, j] == 0)
+
+    # 4-connexity constraint
+    for i in 1:m
+        for j in 1:n
+            for i_ in 1:m
+                for j_ in 1:n
+                    if abs(i-i_) + abs(j-j_) >1
+                        @constraint(M, x[i, j, i_, j_] == 0)
+                    end
+                    @constraint(M, x[i, j, i_, j_] - x[i_, j_, i, j] == 0) # symetric edge {(i,j), (i_,j_)} = {(i_,j_), (i,j)}
+                end
+            end
+        end
+    end
+
+    # No isolated vertex (interior nodes of degree-4)
+    for i in 2:m-1
+        for j in 2:n-1
+             @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >= 1)
+             @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) + 3*y[i, j] <= 4)
+        end
+    end
+
+    # No isolated vertex (boundary nodes of degree-3)
+    i=1
+    for j in 2:n-1
+        @constraint(M, (x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >= 1)
+        @constraint(M, (x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) + 2*y[i, j] <= 3)
+    end
+    i=m
+    for j in 2:n-1
+        @constraint(M, (x[i, j, i-1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >=1)
+        @constraint(M, (x[i, j, i-1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) + 2*y[i, j] <= 3)
+    end
+    j=1
+    for i in 2:m-1
+        @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j+1]) >= 1)
+        @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j+1]) + 2*y[i, j] <= 3)
+    end
+    j=n
+    for i in 2:m-1
+        @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1]) >= 1)
+        @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1]) + 2*y[i, j] <= 3)
+    end
+
+    # No isolated vertex (corner nodes of degree-2)
+    @constraint(M, (x[1, 1, 2, 1] + x[1, 1, 1, 2]) >= 1)
+    @constraint(M, (x[1, 1, 2, 1] + x[1, 1, 1, 2]) + y[1, 1] <= 2)
+
+    @constraint(M, (x[1, n, 1, n-1] + x[1, n, 2, n]) >= 1)
+    @constraint(M, (x[1, n, 1, n-1] + x[1, n, 2, n]) + y[1, n] <= 2)
+
+    @constraint(M, (x[m, 1, m-1, 1] + x[m, 1, m, 2]) >= 1)
+    @constraint(M, (x[m, 1, m-1, 1] + x[m, 1, m, 2]) + y[m, 1] <= 2)
+
+    @constraint(M, (x[m, n, m-1, n] + x[m, n, m, n-1]) >= 1)
+    @constraint(M, (x[m, n, m-1, n] + x[m, n, m, n-1]) + y[m, n] <= 2)
+
+    # Constraints acyclic for any subsets of vertices
+    @constraint(M, [i_ in 2:m, j_ in 2:n], sum(x[1:i_, 1:j_, 1:i_, 1:j_]) == 2*( i_*j_-1 ) )
+    #@constraint(M, [i in 1:m-1, j in 1:n-1, i_ in i+1:m, j_ in j+1:n], sum(x[i:i_, j:j_, i:i_, j:j_]) == 2*( (i_-i+1)*(j_-j+1)-1 ) )
+
+    @objective(M, Max, sum(y))
+
+    # Start a chronometer
+    start = time()
+
+    # Solve the model
+    optimize!(M)
+
+    # Return:
+    # 1 - true if an optimum is found (type: Bool)
+    # 2 - the resolution time (type Float64)
+    # 3 - the value of each edge ((Array{VariableRef, 2}))
+    return JuMP.primal_status(M) == JuMP.MathOptInterface.FEASIBLE_POINT, time() - start, y
 
 end # function
 
 
 
 """
-Another linear programming modelisation using the acyclic constraint for all subsets of vertices
+First try to solve the minimum spanning tree problem using the acyclic constraint for all subsets of vertices
 """
 function cplexSolveMLSTGrid(m::Int, n::Int)
     # Create the model
@@ -243,6 +338,21 @@ function preCalcul(m::Int, n::Int)
     return costs
 end
 
+function VariablesToCDS(m::Int, n::Int, Y::Array{VariableRef, 2})
+    # Convert variables
+    CDS = Set{Tuple{Int, Int}}()
+
+    for i in 1:m
+        for j in 1:n
+            if JuMP.value(Y[i, j]) <= TOL
+                push!(CDS, (i, j))
+            end
+        end
+    end
+
+    return CDS, m*n-length(CDS)
+end
+
 
 """
 Convert the cplex solution to the corresponding connected dominating set
@@ -347,20 +457,22 @@ function KRUSKAL(m::Int, n::Int)
         end
     end
 
-    return Set(keys(filter(p -> p.second > 1, degrees))), total_cost
+    CDS = Set(keys(filter(p -> p.second > 1, degrees)))
+
+    return CDS, m*n-length(CDS)
 end # function
 
 
 
-m=5
-n=5
-isOptimal, solveTime, x, value = cplexSolveMLSTGrid2(m, n)
+m=15
+n=6
+isOptimal, solveTime, x = cplexSolveMLSTGrid3(m, n)
 println("isOptimal: ", isOptimal)
 
 if isOptimal
-    CDS = VariablesToCDS(m, n, x)
-    #CDS, value = KRUSKAL(m, n)
-    displaySolution(m, n, CDS, value)
+    CDS, nb_leaves = VariablesToCDS(m, n, x)
+    #CDS, nb_leaves = KRUSKAL(m, n)
+    displaySolution(m, n, CDS, nb_leaves)
 end
 
 

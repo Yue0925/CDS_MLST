@@ -25,25 +25,25 @@ function generateResultsGrid()
                     if type == "CDS"
                         isOptimal = true
                         start = time()
-                        CDS, value = CDSForGridGraphs(m, n)
+                        CDS, nb_leaves = CDSForGridGraphs(m, n)
                         solveTime = time() - start
-                        writeSolution(fileName, m, n, CDS, value)
+                        writeSolution(fileName, m, n, CDS, nb_leaves)
                     end
 
                     if type == "PL"
-                        isOptimal, solveTime, x, value = cplexSolveMLSTGrid2(m, n)
+                        isOptimal, solveTime, x = cplexSolveMLSTGrid3(m, n)
                         if isOptimal
-                            CDS = VariablesToCDS(m, n, x)
-                            writeSolution(fileName, m, n, CDS, value)
+                            CDS, nb_leaves = VariablesToCDS(m, n, x)
+                            writeSolution(fileName, m, n, CDS, nb_leaves)
                         end
                     end
 
                     if type == "KRUSKAL"
                         isOptimal = true
                         start = time()
-                        CDS, value = KRUSKAL(m, n)
+                        CDS, nb_leaves = KRUSKAL(m, n)
                         solveTime = time() - start
-                        writeSolution(fileName, m, n, CDS, value)
+                        writeSolution(fileName, m, n, CDS, nb_leaves)
                     end
 
                     fout = open(fileName, "a")

@@ -43,5 +43,5 @@ function CDSForGridGraphs(m::Int, n::Int)
         cost += (2 * (floor(Int, n/3) - 1) + 1)
     end
 
-    return CDS, cost
+    return CDS, m*n-length(CDS)
 end

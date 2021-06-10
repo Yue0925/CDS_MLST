@@ -17,6 +17,6 @@
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫⚪
-A Grid graph of size 19×14 , with γ_c(G)=99, the weight of the spanning tree 55.5
+A Grid graph of size 19×14 , with γ_c(G)=99 , a number of leaves 167
 solveTime = 1.0013580322265625e-5
 isOptimal = true

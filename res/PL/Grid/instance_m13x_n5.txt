@@ -1,16 +1,16 @@
-⚪⚫⚪⚪⚪
-⚪⚫⚫⚫⚫
-⚪⚫⚪⚫⚪
 ⚪⚫⚪⚫⚪
 ⚪⚫⚫⚫⚪
-⚪⚫⚫⚫⚪
-⚪⚫⚫⚫⚪
-⚪⚫⚫⚫⚪
-⚪⚫⚫⚫⚪
-⚪⚫⚫⚫⚪
-⚪⚫⚫⚫⚪
-⚫⚫⚫⚫⚪
-⚪⚪⚪⚫⚪
-A Grid graph of size 13×5 , with γ_c(G)=35, the weight of the spanning tree 50.66666666666666
-solveTime = 0.33296799659729004
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+⚪⚫⚪⚫⚪
+A Grid graph of size 13×5 , with γ_c(G)=27 , a number of leaves 38
+solveTime = 0.03958010673522949
 isOptimal = true
