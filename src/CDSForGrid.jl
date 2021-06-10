@@ -33,10 +33,15 @@ function CDSForGridGraphs(m::Int, n::Int)
         end
     end
 
-    return CDS
+    cost = (3*n-7) * 2/3 + 4 * 3/2 + 3*2 + n-2 + ceil(Int, n/3) * 5/6
+
+    if n%3 == 0
+        cost += (2 * (n/3 - 2) + 2)
+    elseif n%3 == 1
+        cost += (2 * (floor(Int, n/3) - 1) + 1 + 2)
+    else
+        cost += (2 * (floor(Int, n/3) - 1) + 1)
+    end
+
+    return CDS, cost
 end
-
-
-m=5
-n=5
-displaySolution(m, n, CDSForGridGraphs(m,n))

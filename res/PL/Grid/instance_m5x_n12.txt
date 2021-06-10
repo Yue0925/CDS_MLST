@@ -1,8 +1,8 @@
-⚪⚫⚪⚪⚪⚪⚪⚪⚪⚪⚫⚪
-⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
+⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚫⚪
+⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
 ⚪⚫⚪⚪⚪⚪⚫⚪⚫⚪⚫⚪
-⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
-⚪⚫⚪⚪⚪⚪⚪⚪⚪⚪⚫⚪
-A Grid graph of size 5×12 , with γ_c(G)=28
-solveTime = 0.04085111618041992
+⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
+⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚫⚪
+A Grid graph of size 5×12 , with γ_c(G)=28, the weight of the spanning tree 47.0
+solveTime = 0.04670596122741699
 isOptimal = true

@@ -1,5 +1,5 @@
-⚪⚫⚪⚪⚪⚪⚪⚪⚪⚫⚪
-⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
+⚪⚪⚪⚪⚪⚪⚪⚪⚪⚫⚪
+⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
 ⚪⚫⚪⚪⚫⚪⚪⚪⚪⚫⚪
 ⚪⚫⚫⚪⚫⚫⚫⚫⚫⚫⚪
 ⚪⚫⚫⚪⚫⚫⚪⚫⚫⚫⚪
@@ -18,6 +18,6 @@
 ⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
 ⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
 ⚪⚫⚪⚪⚪⚪⚪⚪⚪⚫⚪
-A Grid graph of size 20×11 , with γ_c(G)=152
-solveTime = 0.8358988761901855
+A Grid graph of size 20×11 , with γ_c(G)=152, the weight of the spanning tree 158.33333333333343
+solveTime = 0.7071900367736816
 isOptimal = true

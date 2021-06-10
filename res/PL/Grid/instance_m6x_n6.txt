@@ -1,9 +1,9 @@
-⚪⚫⚪⚪⚫⚪
-⚪⚫⚫⚫⚫⚪
+⚪⚪⚪⚪⚪⚪
+⚫⚫⚫⚫⚫⚫
 ⚪⚫⚪⚪⚫⚪
 ⚪⚫⚫⚪⚫⚪
 ⚫⚫⚫⚫⚫⚪
 ⚪⚪⚪⚪⚫⚪
-A Grid graph of size 6×6 , with γ_c(G)=17
-solveTime = 0.022428035736083984
+A Grid graph of size 6×6 , with γ_c(G)=17, the weight of the spanning tree 29.333333333333332
+solveTime = 0.01841592788696289
 isOptimal = true

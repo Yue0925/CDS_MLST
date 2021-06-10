@@ -9,7 +9,7 @@ Arguments
 - n: the number of columns in a grid graph
 - CDS: a connected dominating set containing vertices' coordinates
 """
-function displaySolution(m::Int, n::Int, CDS::Set{Tuple{Int, Int}})
+function displaySolution(m::Int, n::Int, CDS::Set{Tuple{Int, Int}}, value::Float64)
     for i in 1:m
         for j in 1:n
             if (i, j) in CDS
@@ -20,7 +20,7 @@ function displaySolution(m::Int, n::Int, CDS::Set{Tuple{Int, Int}})
         end
         print('\n')
     end
-    println("A Grid graph of size ", m, "×", n, " , with γ_c(G)=", length(CDS))
+    println("A Grid graph of size ", m, "×", n, " , with γ_c(G)=", length(CDS), ", the weight of the spanning tree ", value)
 end
 
 
@@ -33,7 +33,7 @@ Arguments
 - n: the number of columns in a grid graph
 - CDS: a connected dominating set containing vertices' coordinates
 """
-function writeSolution(outputFile::String, m::Int, n::Int, CDS::Set{Tuple{Int, Int}})
+function writeSolution(outputFile::String, m::Int, n::Int, CDS::Set{Tuple{Int, Int}}, value::Float64)
     # Open the output file
     writer = open(outputFile, "w")
 
@@ -47,6 +47,6 @@ function writeSolution(outputFile::String, m::Int, n::Int, CDS::Set{Tuple{Int, I
         end
         print(writer, '\n')
     end
-    println(writer, "A Grid graph of size ", m, "×", n, " , with γ_c(G)=", length(CDS))
+    println(writer, "A Grid graph of size ", m, "×", n, " , with γ_c(G)=", length(CDS), ", the weight of the spanning tree ", value)
     close(writer)
 end

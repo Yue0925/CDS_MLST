@@ -106,7 +106,7 @@ function cplexSolveMLSTGrid2(m::Int, n::Int)
     # 1 - true if an optimum is found (type: Bool)
     # 2 - the resolution time (type Float64)
     # 3 - the value of each edge ((Array{VariableRef, 4}))
-    return JuMP.primal_status(M) == JuMP.MathOptInterface.FEASIBLE_POINT, time() - start, x
+    return JuMP.primal_status(M) == JuMP.MathOptInterface.FEASIBLE_POINT, time() - start, x, objective_value(M)/2
 
 end # function
 
@@ -347,20 +347,20 @@ function KRUSKAL(m::Int, n::Int)
         end
     end
 
-    return Set(keys(filter(p -> p.second > 1, degrees)))
+    return Set(keys(filter(p -> p.second > 1, degrees))), total_cost
 end # function
 
 
 
 m=5
 n=5
-isOptimal, solveTime, x = cplexSolveMLSTGrid2(m, n)
+isOptimal, solveTime, x, value = cplexSolveMLSTGrid2(m, n)
 println("isOptimal: ", isOptimal)
 
 if isOptimal
     CDS = VariablesToCDS(m, n, x)
-    #CDS, cost = KRUSKAL(m, n)
-    displaySolution(m, n, CDS)
+    #CDS, value = KRUSKAL(m, n)
+    displaySolution(m, n, CDS, value)
 end
 
 

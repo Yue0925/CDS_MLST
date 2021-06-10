@@ -13,6 +13,6 @@
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪
 ⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪
-A Grid graph of size 15×12 , with γ_c(G)=64
-solveTime = 1.5974044799804688e-5
+A Grid graph of size 15×12 , with γ_c(G)=64, the weight of the spanning tree 50.666666666666664
+solveTime = 9.059906005859375e-6
 isOptimal = true
