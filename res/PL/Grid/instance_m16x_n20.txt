@@ -15,5 +15,5 @@
 ⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫
 ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪
 A Grid graph of size 16×20 , with γ_c(G)=207, the weight of the spanning tree 226.66666666666657
-solveTime = 2.4672698974609375
+solveTime = 3.2362239360809326
 isOptimal = true

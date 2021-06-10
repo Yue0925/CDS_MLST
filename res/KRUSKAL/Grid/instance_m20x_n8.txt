@@ -19,5 +19,5 @@
 ⚫⚫⚫⚫⚫⚫⚫⚫
 ⚪⚪⚪⚪⚪⚪⚪⚪
 A Grid graph of size 20×8 , with γ_c(G)=93, the weight of the spanning tree 117.33333333333306
-solveTime = 0.0024819374084472656
+solveTime = 0.0021088123321533203
 isOptimal = true
