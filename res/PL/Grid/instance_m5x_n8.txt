@@ -1,8 +1,8 @@
-⚪⚪⚪⚪⚪⚪⚪⚪
-⚫⚫⚫⚫⚫⚫⚫⚫
-⚪⚫⚪⚪⚪⚪⚪⚪
+⚪⚫⚪⚪⚪⚫⚫⚪
+⚪⚫⚪⚫⚪⚪⚫⚪
+⚪⚫⚪⚫⚪⚪⚫⚪
 ⚫⚫⚫⚫⚫⚫⚫⚪
 ⚪⚪⚪⚪⚪⚪⚫⚪
 A Grid graph of size 5×8 , with γ_c(G)=17 , a number of leaves 23
-solveTime = 0.026983022689819336
+solveTime = 565.207426071167
 isOptimal = true

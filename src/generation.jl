@@ -31,9 +31,9 @@ function generateResultsGrid()
                     end
 
                     if type == "PL"
-                        isOptimal, solveTime, x = cplexSolveMLSTGrid3(m, n)
+                        isOptimal, solveTime, x, Nodes = cplexSolveMLST(preProcessingForGrid(m, n))
                         if isOptimal
-                            CDS, nb_leaves = VariablesToCDS(m, n, x)
+                            CDS, nb_leaves = variablesToCDS(m, n, x, Nodes)
                             writeSolution(fileName, m, n, CDS, nb_leaves)
                         end
                     end
