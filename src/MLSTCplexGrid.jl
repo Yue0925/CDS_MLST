@@ -18,174 +18,12 @@ Return
 - x: 4-dimensional variables array such that x[i, j, i_, j_] = 1 if edge {(i, j), (i_,j_)} belongs to a spanning tree
 - getsolvetime(m): resolution time in seconds
 """
-function cplexSolveMLSTGrid2(m::Int, n::Int)
-    # the cost of edge {(i,j), (i_,j_)}
-    cost = zeros(Float64, (m, n, m, n))
-
-    # Create the model
-    M = Model(CPLEX.Optimizer)
-
-    # x[i, j, i_, j_] = 1 if edge {(i,j), (i_, j_)} belongs to a spanning tree
-    @variable(M, x[1:m, 1:n, 1:m, 1:n], Bin)
-
-    # No buckle
-    @constraint(M, [i in 1:m, j in 1:n], x[i, j, i, j] == 0)
-
-    # 4-connexity constraint
-    for i in 1:m
-        for j in 1:n
-            for i_ in 1:m
-                for j_ in 1:n
-                    if abs(i-i_) + abs(j-j_) >1
-                        @constraint(M, x[i, j, i_, j_] == 0)
-                    end
-                    @constraint(M, x[i, j, i_, j_] - x[i_, j_, i, j] == 0) # symetric edge {(i,j), (i_,j_)} = {(i_,j_), (i,j)}
-                end
-            end
-        end
-    end
-
-    # No isolated vertex (interior nodes of degree-4)
-    for i in 2:m-1
-        for j in 2:n-1
-             @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >= 1)
-             cost[i, j, i-1, j] = cost[i, j, i+1, j] = cost[i, j, i, j-1] = cost[i, j, i, j+1] = 2/3
-        end
-    end
-
-    # No isolated vertex (boundary nodes of degree-3)
-    i=1
-    for j in 2:n-1
-        @constraint(M, (x[i, j, i+1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >= 1)
-        cost[i, j, i+1, j] = cost[i+1, j, i, j] = 5/6
-        cost[i, j, i, j-1] = cost[i, j, i, j+1] = 1
-    end
-    i=m
-    for j in 2:n-1
-        @constraint(M, (x[i, j, i-1, j] + x[i, j, i, j-1] + x[i, j, i, j+1]) >=1)
-        cost[i, j, i-1, j] = cost[i-1, j, i, j] = 5/6
-        cost[i, j, i, j-1] = cost[i, j, i, j+1] = 1
-    end
-    j=1
-    for i in 2:m-1
-        @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j+1]) >= 1)
-        cost[i, j, i, j+1] = cost[i, j+1, i, j] = 5/6
-        cost[i, j, i-1, j] = cost[i, j, i+1, j] = 1
-    end
-    j=n
-    for i in 2:m-1
-        @constraint(M, (x[i, j, i-1, j] + x[i, j, i+1, j] + x[i, j, i, j-1]) >= 1)
-        cost[i, j, i, j-1] = cost[i, j-1, i, j] = 5/6
-        cost[i, j, i-1, j] = cost[i, j, i+1, j] = 1
-    end
-
-    # No isolated vertex (corner nodes of degree-2)
-    @constraint(M, (x[1, 1, 2, 1] + x[1, 1, 1, 2]) >= 1)
-    cost[1, 1, 2, 1] = cost[1, 1, 1, 2] = cost[2, 1, 1, 1] = cost[1, 2, 1, 1] = 3/2
-    @constraint(M, (x[1, n, 1, n-1] + x[1, n, 2, n]) >= 1)
-    cost[1, n, 1, n-1] = cost[1, n, 2, n] = cost[1, n-1, 1, n] = cost[2, n, 1, n] = 3/2
-    @constraint(M, (x[m, 1, m-1, 1] + x[m, 1, m, 2]) >= 1)
-    cost[m, 1, m-1, 1] = cost[m, 1, m, 2] = cost[m-1, 1, m, 1] = cost[m, 2, m, 1] = 3/2
-    @constraint(M, (x[m, n, m-1, n] + x[m, n, m, n-1]) >= 1)
-    cost[m, n, m-1, n] = cost[m, n, m, n-1] = cost[m-1, n, m, n] = cost[m, n-1, m, n] = 3/2
-
-    # Constraints acyclic for any subsets of vertices
-    @constraint(M, [i_ in 2:m, j_ in 2:n], sum(x[1:i_, 1:j_, 1:i_, 1:j_]) == 2*( i_*j_-1 ) )
-    #@constraint(M, [i in 1:m-1, j in 1:n-1, i_ in i+1:m, j_ in j+1:n], sum(x[i:i_, j:j_, i:i_, j:j_]) == 2*( (i_-i+1)*(j_-j+1)-1 ) )
-
-    @objective(M, Min, sum(x[i, j, i_, j_]*cost[i, j, i_, j_] for i in 1:m for j in 1:n for i_ in 1:m for j_ in 1:n))
-
-    # Start a chronometer
-    start = time()
-
-    # Solve the model
-    optimize!(M)
-
-    # Return:
-    # 1 - true if an optimum is found (type: Bool)
-    # 2 - the resolution time (type Float64)
-    # 3 - the value of each edge ((Array{VariableRef, 4}))
-    return JuMP.primal_status(M) == JuMP.MathOptInterface.FEASIBLE_POINT, time() - start, x
-
-end # function
-
-
-
-function cplexSolveMLST2(Graph::Dict{Tuple{Int, Int}, Set{Tuple{Int, Int}}})
-    # node (i, j) => id
-    Nodes = Dict{Tuple{Int, Int}, Int}()
-
-    i = 1
-    for node in keys(Graph)
-        Nodes[node] = i
-        i += 1
-    end
-
-    # Create the model
-    M = Model(CPLEX.Optimizer)
-
-    # x[u, v] = 1 if edge {u, v} belongs to a spanning tree
-    @variable(M, x[1:m*n, 1:n*m], Bin)
-
-    # z[u, v, t] = 1 if edge {u, v} is a part of the path from s to t
-    @variable(M, z[1:m*n, 1:m*n, 1:m*n], Bin)
-
-    # we choose the node (1, 1) as the source node
-    s = (1, 1)
-
-    # connexity constraint
-    for (u, id_u) in Nodes
-        for (v, id_v) in Nodes
-            if !(v in Graph[u])
-                @constraint(M, x[id_u, id_v] == 0)
-            end
-            @constraint(M, x[id_u, id_v] == x[id_v, id_u])
-        end
-    end
-
-    # there exists a path from source node to all other nodes
-    for (t, id_t) in Nodes
-        if t == s continue end
-        for (u, id_u) in Nodes
-            if u == s
-                b = 1
-            elseif u == t
-                b = -1
-            else
-                b = 0
-            end
-            # the flows on the path from source node to terminal node can exist if it is a part of the spanning tree
-            @constraint(M, [id_v in values(Nodes)], x[id_u, id_v] >= z[id_u, id_v, id_t])
-            # the incoming flows = the outgoing flows except the source and terminal nodes
-            @constraint(M, sum(z[id_u, id_v, id_t] for id_v in values(Nodes)) == sum(z[id_v, id_u, id_t] for id_v in values(Nodes) )+b )
-        end
-    end
-
-    @objective(M, Max, sum( (length(Graph[u]) - sum(x[id_u, Nodes[v]] for v in Graph[u]) )/(length(Graph[u])-1) for (u, id_u) in Nodes) )
-
-    # Start a chronometer
-    start = time()
-
-    # Solve the model
-    optimize!(M)
-
-    # Return:
-    # 1 - true if an optimum is found (type: Bool)
-    # 2 - the resolution time (type Float64)
-    # 3 - the value of each edge ((Array{VariableRef, 2}))
-    return JuMP.primal_status(M) == JuMP.MathOptInterface.FEASIBLE_POINT, time() - start, x, Nodes
-
-end # function
-
-
-
-
 
 
 """
 Given a graph, solve the MLST problem using the flow formulation.
 """
-function cplexSolveMLST(Graph::Dict{Tuple{Int, Int}, Set{Tuple{Int, Int}}})
+function cplexSolveMLST(m::Int, n::Int, Graph::Dict{Tuple{Int, Int}, Set{Tuple{Int, Int}}})
     # node (i, j) => id
     Nodes = Dict{Tuple{Int, Int}, Int}()
 
@@ -205,7 +43,7 @@ function cplexSolveMLST(Graph::Dict{Tuple{Int, Int}, Set{Tuple{Int, Int}}})
     @variable(M, y[1:m*n], Bin)
 
     # z[u, v, t] = 1 if edge {u, v} is a part of the path from s to t
-    @variable(M, z[1:m*n, 1:m*n, 1:m*n], Bin)
+    @variable(M, 0<= z[1:m*n, 1:m*n, 1:m*n] <= 1, Int)
 
     # we choose the node (1, 1) as the source node
     s = (1, 1)
@@ -406,24 +244,6 @@ function variablesToCDS(m::Int, n::Int, Y::Array{VariableRef, 1}, Nodes::Dict{Tu
 end
 
 
-function variablesToCDS(m::Int, n::Int, X::Array{VariableRef, 2}, Nodes::Dict{Tuple{Int, Int}, Int})
-    # Convert variables
-    degrees = Dict((i, j) => 0 for i in 1:m for j in 1:n)
-
-    for (u, id_u) in Nodes
-        for (v, id_v) in Nodes
-            if JuMP.value(X[id_u, id_v]) > TOL
-                degrees[u] += 1
-            end
-        end
-    end
-
-    CDS = Set(keys(filter(p -> p.second > 1, degrees)))
-
-    return CDS, m*n-length(CDS)
-end
-
-
 
 """
 KRUSKAL algrithm finds a minimum spanning tree
@@ -465,9 +285,9 @@ end # function
 
 
 
-m=5
+m=6
 n=5
-isOptimal, solveTime, x, Nodes = cplexSolveMLST(preProcessingForGrid(m, n))
+isOptimal, solveTime, x, Nodes = cplexSolveMLST(m, n, preProcessingForGrid(m, n))
 println("isOptimal: ", isOptimal)
 
 if isOptimal

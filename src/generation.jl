@@ -15,8 +15,8 @@ function generateResultsGrid()
     CDS = Set{Tuple{Int, Int}}()
 
     # For each grid size considered
-    for m in 5:20
-        for n in 5:20
+    for m in 5:10
+        for n in 5:10
             for type in ["CDS", "PL", "KRUSKAL"]
                 fileName = "../res/" * type * "/Grid/instance_m" * string(m) * "x" * "_n" * string(n) * ".txt"
                 #if !isfile(fileName)
@@ -31,7 +31,7 @@ function generateResultsGrid()
                     end
 
                     if type == "PL"
-                        isOptimal, solveTime, x, Nodes = cplexSolveMLST(preProcessingForGrid(m, n))
+                        isOptimal, solveTime, x, Nodes = cplexSolveMLST(m, n, preProcessingForGrid(m, n))
                         if isOptimal
                             CDS, nb_leaves = variablesToCDS(m, n, x, Nodes)
                             writeSolution(fileName, m, n, CDS, nb_leaves)

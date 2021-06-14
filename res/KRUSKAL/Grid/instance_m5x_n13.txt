@@ -1,8 +1,0 @@
-⚪⚫⚪⚪⚪⚪⚪⚪⚪⚪⚪⚫⚪
-⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚪
-⚪⚫⚫⚫⚪⚫⚫⚫⚪⚫⚫⚫⚪
-⚪⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫
-⚪⚫⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪
-A Grid graph of size 5×13 , with γ_c(G)=35 , a number of leaves 30
-solveTime = 0.0004839897155761719
-isOptimal = true

@@ -1,9 +1,0 @@
-⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪
-⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫
-⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫
-⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫
-⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚫
-⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪⚫⚪⚪
-A Grid graph of size 6×13 , with γ_c(G)=32 , a number of leaves 46
-solveTime = 5.0067901611328125e-6
-isOptimal = true
