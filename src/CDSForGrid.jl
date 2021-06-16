@@ -45,3 +45,13 @@ function CDSForGridGraphs(m::Int, n::Int)
 
     return CDS, m*n-length(CDS)
 end
+
+function heuristiqueCDSForGrids(m::Int, n::Int)
+    CDS, nb_leaves = CDSForGridGraphs(m, n)
+    CDS_re, nb_leaves_re = CDSForGridGraphs(n, m)
+    if nb_leaves > nb_leaves_re
+        return CDS, nb_leaves, false
+    else
+        return CDS_re, nb_leaves_re, true
+    end
+end

@@ -1,8 +1,0 @@
-⚪⚫⚪⚪⚫⚪
-⚪⚫⚪⚪⚫⚪
-⚪⚫⚪⚪⚫⚪
-⚪⚫⚫⚫⚫⚫
-⚪⚫⚪⚪⚪⚪
-A Grid graph of size 5×6 , with γ_c(G)=12 , a number of leaves 18
-solveTime = 27.92029595375061
-isOptimal = true
