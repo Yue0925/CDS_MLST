@@ -1,0 +1,5 @@
+" A 6-hypercube graph "
+γ_c = 18
+MLST = 46
+solveTime = 0.0
+isOptimal = true

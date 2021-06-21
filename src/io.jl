@@ -51,7 +51,21 @@ function writeSolution(outputFile::String, m::Int, n::Int, CDS::Set{Tuple{Int, I
 
     println(writer, "A Grid graph of size ", m, "×", n, "\"")
     println(writer, "γ_c = ", length(CDS))
-    println(writer, "nb_leaves = ", nb_leaves)
+    println(writer, "MLST = ", nb_leaves)
+    close(writer)
+end
+
+
+"""
+Write solution in the input file for hyprcubes
+"""
+function writeSolution(outputFile::String, n::Int, CDS::Set{String})
+    # Open the output file
+    writer = open(outputFile, "w")
+
+    println(writer, "\" A ", n, "-hypercube graph ", "\"")
+    println(writer, "γ_c = ", length(CDS))
+    println(writer, "MLST = ", 2^n - length(CDS))
     close(writer)
 end
 
@@ -79,7 +93,7 @@ function writeSolutionReversed(outputFile::String, m::Int, n::Int, CDS::Set{Tupl
 
     println(writer, "A Grid graph of size ", m, "×", n, "\"")
     println(writer, "γ_c = ", length(CDS))
-    println(writer, "nb_leaves = ", nb_leaves)
+    println(writer, "MLST = ", nb_leaves)
     close(writer)
 end
 
@@ -183,7 +197,7 @@ function resultsArray(resultFolder::String, outputFile::String)
 
     # Create the second header line with the content of the result columns
     for folder in folderName
-        header *= " & \\textbf{Time (s)} & \\textbf{CDS} & \\textbf{Number of leaves}  "
+        header *= " & \\textbf{Time (s)} & \\textbf{CDS} & \\textbf{MLST}  "
     end
 
     header *= "\\\\\\hline\n"
@@ -219,7 +233,7 @@ function resultsArray(resultFolder::String, outputFile::String)
 
                 include(path)
 
-                println(fout, " & ", round(solveTime, digits=2), " & ", γ_c, " & ", nb_leaves)
+                println(fout, " & ", round(solveTime, digits=2), " & ", γ_c, " & ", MLST)
 
             # If the instance has not been solved by this method
             else

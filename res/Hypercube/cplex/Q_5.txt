@@ -1,0 +1,5 @@
+" A 5-hypercube graph "
+γ_c = 10
+MLST = 22
+solveTime = 28.187150955200195
+isOptimal = true

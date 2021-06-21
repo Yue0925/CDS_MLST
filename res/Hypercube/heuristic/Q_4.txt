@@ -1,0 +1,5 @@
+" A 4-hypercube graph "
+γ_c = 6
+MLST = 10
+solveTime = 0.0
+isOptimal = true

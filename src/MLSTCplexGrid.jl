@@ -1,5 +1,4 @@
 # This file contains methods to solve an instance with CPLEX
-include("io.jl")
 
 #using CPLEX
 #using JuMP
