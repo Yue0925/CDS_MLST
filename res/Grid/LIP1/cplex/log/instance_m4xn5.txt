@@ -1,0 +1,69 @@
+
+GUB cover cuts applied:  4
+Cover cuts applied:  2
+Mixed integer rounding cuts applied:  2
+Zero-half cuts applied:  11
+Gomory fractional cuts applied:  4
+
+Root node processing (before b&c):
+  Real time             =    0.10 sec. (62.10 ticks)
+Parallel b&c, 4 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.10 sec. (62.10 ticks)
+Version identifier: 12.10.0.0 | 2019-11-26 | 843d4de
+CPXPARAM_MIP_Interval                            10
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0.98999999999999999
+Tried aggregator 2 times.
+MIP Presolve eliminated 7155 rows and 7186 columns.
+MIP Presolve modified 1 coefficients.
+Aggregator did 53 substitutions.
+Reduced MIP has 1535 rows, 1181 columns, and 4711 nonzeros.
+Reduced MIP has 1181 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (11.78 ticks)
+Probing fixed 22 vars, tightened 0 bounds.
+Probing changed sense of 48 constraints.
+Probing time = 0.01 sec. (5.22 ticks)
+Tried aggregator 2 times.
+MIP Presolve eliminated 237 rows and 177 columns.
+Aggregator did 35 substitutions.
+Reduced MIP has 1263 rows, 969 columns, and 3859 nonzeros.
+Reduced MIP has 969 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (5.09 ticks)
+Probing time = 0.00 sec. (2.24 ticks)
+Tried aggregator 2 times.
+Detecting symmetries...
+MIP Presolve eliminated 81 rows and 65 columns.
+Aggregator did 1 substitutions.
+Reduced MIP has 1181 rows, 903 columns, and 3598 nonzeros.
+Reduced MIP has 903 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (5.18 ticks)
+Probing time = 0.00 sec. (1.95 ticks)
+Clique table members: 886.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 4 threads.
+Root relaxation solution time = 0.01 sec. (5.25 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0       13.5000    87                     13.5000      202         
+      0     0       13.0000    87                    Cuts: 54      431         
+      0     0       12.6667    87                    Cuts: 50      544         
+*     0+    0                           10.0000       12.6667            26.67%
+*     0+    0                           11.0000       12.6667            15.15%
+      0     0       12.6667    87       11.0000      Cuts: 62      627   15.15%
+      0     0       12.6667    87       11.0000      Cuts: 48      685   15.15%
+Detecting symmetries...
+      0     2       12.6667   139       11.0000       12.6667      685   15.15%
+Elapsed time = 0.19 sec. (143.78 ticks, tree = 0.02 MB, solutions = 2)
+     10     7       12.1667    90       11.0000       12.6667     1059   15.15%
+     20     6       12.0000    82       11.0000       12.6667     1250   15.15%
+     30     6       12.2500   119       11.0000       12.6667     2015   15.15%
+     40     5        cutoff             11.0000       12.6667     2552   15.15%
+     50     7       12.3333    84       11.0000       12.4352     2809   13.05%
+     60     5        cutoff             11.0000       12.4352     2793   13.05%
+the number of Nodes = 70

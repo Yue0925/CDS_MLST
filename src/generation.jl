@@ -20,7 +20,8 @@ function generateResultsGrid()
     for m in 4:10
         for n in m:10
             for type in ["heuristic", "cplex"]
-                fileName = "../res/Grid/" * type * "/instance_m" * string(m) * "x" * "n" * string(n) * ".txt"
+                fileName = "../res/Grid/LIP2/" * type * "/instance_m" * string(m) * "x" * "n" * string(n) * ".txt"
+
                 #if !isfile(fileName)
                     println("-- Generating file " * fileName)
 
@@ -33,7 +34,16 @@ function generateResultsGrid()
                     end
 
                     if type == "cplex"
-                        isOptimal, solveTime, x, Nodes = cplexSolveMLST2(m, n, preProcessingForGrid(m, n))
+                        logFile = "../res/Grid/LIP2/" * type * "/log/instance_m" * string(m) * "x" * "n" * string(n) * ".txt"
+                        fileio = open(logFile, "w")
+                        tempout = stdout # save stream
+                        redirect_stdout(fileio) # redirect to fileio
+                        # run solver
+                        isOptimal, solveTime, x, Nodes, nb_nodes = cplexSolveMLST2(m, n, preProcessingForGrid(m, n))
+                        println("the number of Nodes = ", nb_nodes)
+                        close(fileio)
+                        redirect_stdout(tempout) #revert back
+
                         if isOptimal
                             CDS, nb_leaves = variablesToCDS(m, n, x, Nodes)
                             writeSolution(fileName, m, n, CDS, nb_leaves)
@@ -56,7 +66,7 @@ function generateResultsGrid()
         end
     end
 
-    resultFolder = "../res/Grid/"
+    resultFolder = "../res/Grid/LIP3/"
     resultsArray(resultFolder, resultFolder * "array.tex")
 end
 

@@ -1,0 +1,10 @@
+"
+⚪⚪⚪⚪⚫⚪
+⚫⚫⚫⚫⚫⚪
+⚪⚫⚪⚪⚫⚪
+⚪⚫⚪⚪⚫⚪
+A Grid graph of size 4×6"
+γ_c = 10
+MLST = 14
+solveTime = 0.31348109245300293
+isOptimal = true

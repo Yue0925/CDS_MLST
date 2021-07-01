@@ -1,0 +1,58 @@
+
+Cover cuts applied:  154
+Implied bound cuts applied:  4
+Flow cuts applied:  236
+Mixed integer rounding cuts applied:  84
+Zero-half cuts applied:  83
+Multi commodity flow cuts applied:  17
+Lift and project cuts applied:  41
+Gomory fractional cuts applied:  5
+
+Root node processing (before b&c):
+  Real time             =    0.35 sec. (202.23 ticks)
+Parallel b&c, 4 threads:
+  Real time             =    8.69 sec. (6474.51 ticks)
+  Sync time (average)   =    0.78 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    9.04 sec. (6676.75 ticks)
+Version identifier: 12.10.0.0 | 2019-11-26 | 843d4de
+CPXPARAM_MIP_Interval                            10
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0.98999999999999999
+Tried aggregator 2 times.
+MIP Presolve eliminated 3605 rows and 2357 columns.
+MIP Presolve modified 1 coefficients.
+Aggregator did 61 substitutions.
+Reduced MIP has 215 rows, 210 columns, and 751 nonzeros.
+Reduced MIP has 92 binaries, 118 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (3.23 ticks)
+Probing fixed 0 vars, tightened 7 bounds.
+Probing changed sense of 4 constraints.
+Probing time = 0.00 sec. (0.05 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve eliminated 7 rows and 6 columns.
+MIP Presolve modified 9 coefficients.
+Reduced MIP has 208 rows, 204 columns, and 726 nonzeros.
+Reduced MIP has 88 binaries, 116 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.51 ticks)
+Probing time = 0.00 sec. (0.04 ticks)
+Clique table members: 12.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 4 threads.
+Root relaxation solution time = 0.00 sec. (2.04 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0       23.3333    48                     23.3333      210         
+      0     0       23.3333    48                    Cuts: 22      260         
+      0     0       22.0000    48                    Cuts: 46      288         
+      0     0       22.0000    48                    Cuts: 18      339         
+*     0+    0                           19.0000       22.0000            15.79%
+*     0+    0                           20.0000       22.0000            10.00%
+*     0+    0                           22.0000       22.0000             0.00%
+      0     0        cutoff             22.0000                    339     --- 
+Elapsed time = 0.05 sec. (27.15 ticks, tree = 0.01 MB, solutions = 3)
+the number of Nodes = 0
