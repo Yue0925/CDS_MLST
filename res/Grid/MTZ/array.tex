@@ -1,0 +1,206 @@
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage [utf8] {inputenc} % utf-8 / latin1
+\usepackage{multicol}
+\setlength{\hoffset}{-18pt}
+\setlength{\oddsidemargin}{0pt} % Marge gauche sur pages impaires
+\setlength{\evensidemargin}{9pt} % Marge gauche sur pages paires
+\setlength{\marginparwidth}{54pt} % Largeur de note dans la marge
+\setlength{\textwidth}{481pt} % Largeur de la zone de texte (17cm)
+\setlength{\voffset}{-18pt} % Bon pour DOS
+\setlength{\marginparsep}{7pt} % Séparation de la marge
+\setlength{\topmargin}{0pt} % Pas de marge en haut
+\setlength{\headheight}{13pt} % Haut de page
+\setlength{\headsep}{10pt} % Entre le haut de page et le texte
+\setlength{\footskip}{27pt} % Bas de page + séparation
+\setlength{\textheight}{668pt} % Hauteur de la zone de texte (25cm)
+\begin{document}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+ \begin{tabular}{lrrrrrr}
+	\hline
+ & \multicolumn{3}{c}{\textbf{cplex}} & \multicolumn{3}{c}{\textbf{heuristic}}\\
+\textbf{Instance}  & \textbf{Time (s)} & \textbf{CDS} & \textbf{MLST}   & \textbf{Time (s)} & \textbf{CDS} & \textbf{MLST}  \\\hline
+
+instance\_m10xn10.txt & 6366.47 & 39 & 61
+ & 0.0 & 41 & 59
+\\
+instance\_m4xn10.txt & 0.34 & 17 & 23
+ & 0.0 & 17 & 23
+\\
+instance\_m4xn4.txt & 13.54 & 7 & 9
+ & 0.0 & 7 & 9
+\\
+instance\_m4xn5.txt & 0.03 & 9 & 11
+ & 0.0 & 9 & 11
+\\
+instance\_m4xn6.txt & 0.04 & 10 & 14
+ & 0.0 & 10 & 14
+\\
+instance\_m4xn7.txt & 0.07 & 12 & 16
+ & 0.0 & 12 & 16
+\\
+instance\_m4xn8.txt & 0.23 & 14 & 18
+ & 0.0 & 14 & 18
+\\
+instance\_m4xn9.txt & 0.17 & 15 & 21
+ & 0.0 & 15 & 21
+\\
+instance\_m5xn10.txt & 3.33 & 21 & 29
+ & 0.0 & 21 & 29
+\\
+instance\_m5xn5.txt & 0.04 & 11 & 14
+ & 0.0 & 11 & 14
+\\
+instance\_m5xn6.txt & 0.05 & 12 & 18
+ & 0.0 & 12 & 18
+\\
+instance\_m5xn7.txt & 0.21 & 15 & 20
+ & 0.0 & 15 & 20
+\\
+instance\_m5xn8.txt & 0.61 & 17 & 23
+ & 0.0 & 17 & 23
+\\
+instance\_m5xn9.txt & 0.34 & 18 & 27
+ & 0.0 & 18 & 27
+\\
+instance\_m6xn10.txt & 0.22 & 22 & 38
+ & 0.0 & 22 & 38
+\\
+instance\_m6xn6.txt & 0.08 & 14 & 22
+ & 0.0 & 14 & 22
+\\
+instance\_m6xn7.txt & 0.1 & 16 & 26
+ & 0.0 & 16 & 26
+\\
+instance\_m6xn8.txt & 0.15 & 18 & 30
+ & 0.0 & 18 & 30
+\\
+instance\_m6xn9.txt & 0.14 & 20 & 34
+ & 0.0 & 20 & 34
+\\
+instance\_m7xn10.txt & 34.79 & 28 & 42
+ & 0.0 & 29 & 41
+\\
+instance\_m7xn7.txt & 1.33 & 20 & 29
+ & 0.0 & 21 & 28
+\\
+instance\_m7xn8.txt & 8.48 & 23 & 33
+ & 0.0 & 23 & 33
+\\
+instance\_m7xn9.txt & 7.62 & 24 & 39
+ & 0.0 & 24 & 39
+\\
+instance\_m8xn10.txt & 415.29 & 32 & 48
+ & 0.0 & 32 & 48
+\\
+instance\_m8xn8.txt & 24.84 & 26 & 38
+ & 0.0 & 26 & 38
+\\
+instance\_m8xn9.txt & 10.64 & 27 & 45
+ & 0.0 & 27 & 45
+\\
+instance\_m9xn10.txt & 11.6 & 33 & 57
+ & 0.0 & 33 & 57
+\\
+instance\_m9xn9.txt & 6.59 & 30 & 51
+ & 0.0 & 30 & 51
+\\
+instance\_m10xn10.txt & 6366.47 & 39 & 61
+ & 0.0 & 41 & 59
+\\
+\hline\end{tabular}
+\end{center}
+\newpage
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+ \begin{tabular}{lrrrrrr}
+	\hline
+ & \multicolumn{3}{c}{\textbf{cplex}} & \multicolumn{3}{c}{\textbf{heuristic}}\\
+\textbf{Instance}  & \textbf{Time (s)} & \textbf{CDS} & \textbf{MLST}   & \textbf{Time (s)} & \textbf{CDS} & \textbf{MLST}  \\\hline
+
+instance\_m4xn10.txt & 0.34 & 17 & 23
+ & 0.0 & 17 & 23
+\\
+instance\_m4xn4.txt & 13.54 & 7 & 9
+ & 0.0 & 7 & 9
+\\
+instance\_m4xn5.txt & 0.03 & 9 & 11
+ & 0.0 & 9 & 11
+\\
+instance\_m4xn6.txt & 0.04 & 10 & 14
+ & 0.0 & 10 & 14
+\\
+instance\_m4xn7.txt & 0.07 & 12 & 16
+ & 0.0 & 12 & 16
+\\
+instance\_m4xn8.txt & 0.23 & 14 & 18
+ & 0.0 & 14 & 18
+\\
+instance\_m4xn9.txt & 0.17 & 15 & 21
+ & 0.0 & 15 & 21
+\\
+instance\_m5xn10.txt & 3.33 & 21 & 29
+ & 0.0 & 21 & 29
+\\
+instance\_m5xn5.txt & 0.04 & 11 & 14
+ & 0.0 & 11 & 14
+\\
+instance\_m5xn6.txt & 0.05 & 12 & 18
+ & 0.0 & 12 & 18
+\\
+instance\_m5xn7.txt & 0.21 & 15 & 20
+ & 0.0 & 15 & 20
+\\
+instance\_m5xn8.txt & 0.61 & 17 & 23
+ & 0.0 & 17 & 23
+\\
+instance\_m5xn9.txt & 0.34 & 18 & 27
+ & 0.0 & 18 & 27
+\\
+instance\_m6xn10.txt & 0.22 & 22 & 38
+ & 0.0 & 22 & 38
+\\
+instance\_m6xn6.txt & 0.08 & 14 & 22
+ & 0.0 & 14 & 22
+\\
+instance\_m6xn7.txt & 0.1 & 16 & 26
+ & 0.0 & 16 & 26
+\\
+instance\_m6xn8.txt & 0.15 & 18 & 30
+ & 0.0 & 18 & 30
+\\
+instance\_m6xn9.txt & 0.14 & 20 & 34
+ & 0.0 & 20 & 34
+\\
+instance\_m7xn10.txt & 34.79 & 28 & 42
+ & 0.0 & 29 & 41
+\\
+instance\_m7xn7.txt & 1.33 & 20 & 29
+ & 0.0 & 21 & 28
+\\
+instance\_m7xn8.txt & 8.48 & 23 & 33
+ & 0.0 & 23 & 33
+\\
+instance\_m7xn9.txt & 7.62 & 24 & 39
+ & 0.0 & 24 & 39
+\\
+instance\_m8xn10.txt & 415.29 & 32 & 48
+ & 0.0 & 32 & 48
+\\
+instance\_m8xn8.txt & 24.84 & 26 & 38
+ & 0.0 & 26 & 38
+\\
+instance\_m8xn9.txt & 10.64 & 27 & 45
+ & 0.0 & 27 & 45
+\\
+instance\_m9xn10.txt & 11.6 & 33 & 57
+ & 0.0 & 33 & 57
+\\
+instance\_m9xn9.txt & 6.59 & 30 & 51
+ & 0.0 & 30 & 51
+\\
+\hline\end{tabular}
+\end{center}
+
+\end{document}

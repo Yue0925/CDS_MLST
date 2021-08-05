@@ -1,0 +1,77 @@
+
+GUB cover cuts applied:  1
+Cover cuts applied:  7
+Implied bound cuts applied:  11
+Flow cuts applied:  1
+Mixed integer rounding cuts applied:  12
+Zero-half cuts applied:  7
+Gomory fractional cuts applied:  1
+
+Root node processing (before b&c):
+  Real time             =    0.06 sec. (43.92 ticks)
+Parallel b&c, 4 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    0.06 sec. (43.92 ticks)
+Version identifier: 12.10.0.0 | 2019-11-26 | 843d4de
+CPXPARAM_MIP_Interval                            10
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0.98999999999999999
+Tried aggregator 2 times.
+MIP Presolve eliminated 1559 rows and 734 columns.
+MIP Presolve added 4 rows and 0 columns.
+MIP Presolve modified 90 coefficients.
+Aggregator did 11 substitutions.
+Reduced MIP has 730 rows, 122 columns, and 1712 nonzeros.
+Reduced MIP has 95 binaries, 27 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (3.19 ticks)
+Probing fixed 0 vars, tightened 9 bounds.
+Probing time = 0.00 sec. (0.37 ticks)
+Cover probing fixed 0 vars, tightened 16 bounds.
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve eliminated 496 rows and 0 columns.
+MIP Presolve modified 9 coefficients.
+Reduced MIP has 234 rows, 122 columns, and 720 nonzeros.
+Reduced MIP has 95 binaries, 27 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.70 ticks)
+Probing fixed 0 vars, tightened 7 bounds.
+Probing time = 0.00 sec. (0.16 ticks)
+Cover probing fixed 0 vars, tightened 14 bounds.
+Clique table members: 168.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 4 threads.
+Root relaxation solution time = 0.00 sec. (1.07 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0       17.8333    53                     17.8333      127         
+      0     0       17.7778    53                    Cuts: 75      215         
+      0     0       17.7000    53                    Cuts: 54      295         
+      0     0       17.6716    53                    Cuts: 58      335         
+      0     0       17.6119    53                    Cuts: 34      389         
+      0     0       17.5957    53                    Cuts: 23      417         
+Detecting symmetries...
+      0     0       17.5621    53                    Cuts: 23      446         
+      0     0       17.5513    53                    Cuts: 31      478         
+      0     0       17.5376    53                    Cuts: 30      524         
+      0     0       17.5244    53                    Cuts: 41      567         
+      0     0       17.5143    53                    Cuts: 23      596         
+      0     0       17.5041    53                    Cuts: 28      645         
+      0     0       17.4938    53                    Cuts: 20      682         
+      0     0       17.4871    53                    Cuts: 31      713         
+      0     0       17.4697    53                    Cuts: 21      742         
+      0     0       17.4607    53                    Cuts: 26      768         
+      0     0       17.4510    53                    Cuts: 39      811         
+      0     0       17.4449    53                    Cuts: 23      836         
+      0     0       17.4351    53                    Cuts: 26      897         
+      0     0       17.4288    53                    Cuts: 25      952         
+      0     0       17.4235    53                    Cuts: 36     1005         
+      0     0       17.4203    53                    Cuts: 31     1041         
+*     0+    0                           16.0000       17.4203             8.88%
+      0     0        cutoff             16.0000       16.0000     1085    0.00%
+Elapsed time = 0.15 sec. (96.44 ticks, tree = 0.01 MB, solutions = 1)
+the number of Nodes = 0

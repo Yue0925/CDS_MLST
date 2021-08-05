@@ -1,0 +1,62 @@
+
+GUB cover cuts applied:  12
+Clique cuts applied:  4
+Cover cuts applied:  82
+Implied bound cuts applied:  279
+Flow cuts applied:  10
+Mixed integer rounding cuts applied:  69
+Zero-half cuts applied:  62
+Lift and project cuts applied:  5
+Gomory fractional cuts applied:  1
+
+Root node processing (before b&c):
+  Real time             =    0.31 sec. (191.44 ticks)
+Parallel b&c, 4 threads:
+  Real time             =    1.81 sec. (1835.94 ticks)
+  Sync time (average)   =    0.13 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =    2.11 sec. (2027.38 ticks)
+Version identifier: 12.10.0.0 | 2019-11-26 | 843d4de
+CPXPARAM_MIP_Interval                            10
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0.98999999999999999
+Tried aggregator 2 times.
+MIP Presolve eliminated 2574 rows and 1224 columns.
+MIP Presolve added 4 rows and 0 columns.
+MIP Presolve modified 112 coefficients.
+Aggregator did 11 substitutions.
+Reduced MIP has 1229 rows, 168 columns, and 2812 nonzeros.
+Reduced MIP has 133 binaries, 35 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (4.81 ticks)
+Probing fixed 0 vars, tightened 9 bounds.
+Probing time = 0.00 sec. (0.55 ticks)
+Cover probing fixed 0 vars, tightened 24 bounds.
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve eliminated 914 rows and 0 columns.
+MIP Presolve modified 9 coefficients.
+Reduced MIP has 315 rows, 168 columns, and 984 nonzeros.
+Reduced MIP has 133 binaries, 35 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (1.07 ticks)
+Probing fixed 0 vars, tightened 9 bounds.
+Probing time = 0.00 sec. (0.20 ticks)
+Cover probing fixed 0 vars, tightened 21 bounds.
+Clique table members: 217.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 4 threads.
+Root relaxation solution time = 0.00 sec. (1.07 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0       23.3333    69                     23.3333      131         
+      0     0       22.6667    69                    Cuts: 22      196         
+      0     0       22.6667    69                    Cuts: 78      319         
+      0     0       22.6667    69                     Cuts: 2      372         
+      0     0       22.6667    69                    Cuts: 55      448         
+*     0+    0                           21.0000       22.6667             7.94%
+*     0+    0                           22.0000       22.6667             3.03%
+      0     0        cutoff             22.0000       22.6667      448    3.03%
+Elapsed time = 0.06 sec. (49.10 ticks, tree = 0.01 MB, solutions = 2)
+the number of Nodes = 0
